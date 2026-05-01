@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NewDDBusinessUnitViewModel {
-    @JsonProperty("BuId")
-    @JsonAlias({"buId", "BuId"})
+    @JsonProperty("BUId")
+    @JsonAlias({"buId", "BUId"})
     private Integer buId;
     @JsonProperty("LeId")
     @JsonAlias({"leId", "LeId"})

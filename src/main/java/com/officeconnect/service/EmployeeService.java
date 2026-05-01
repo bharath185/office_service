@@ -553,14 +553,14 @@ public class EmployeeService {
         }
 
         emp.setCompId(model.getCompId());
-        emp.setLeId(model.getLeId() != null ? model.getLeId() : 0);
-        emp.setBuId(model.getBuId() != null ? model.getBuId() : 0);
+        emp.setLeId(model.getLeId() != null ? model.getLeId() : emp.getLeId());
+        emp.setBuId(model.getBuId() != null ? model.getBuId() : emp.getBuId());
         emp.setLocationId(model.getLocationId() != null ? model.getLocationId() : 0);
-        emp.setCategoryId(model.getDeptId());
-        emp.setDeptName(model.getDeptName());
-        emp.setDesignationId(model.getDesignationId());
-        emp.setDesignationName(model.getDesignation());
-        emp.setReportId(model.getReportId());
+        emp.setCategoryId(model.getDeptId() != null ? model.getDeptId() : emp.getCategoryId());
+        emp.setDeptName(model.getDeptName() != null ? model.getDeptName() : emp.getDeptName());
+        emp.setDesignationId(model.getDesignationId() != null ? model.getDesignationId() : emp.getDesignationId());
+        emp.setDesignationName(model.getDesignation() != null ? model.getDesignation() : emp.getDesignationName());
+        emp.setReportId(model.getReportId() != null ? model.getReportId() : emp.getReportId());
         emp.setReportName(reportName);
         emp.setEmpCode(model.getEmpCode());
         emp.setUserName(model.getEmpCode());
@@ -2954,7 +2954,7 @@ public class EmployeeService {
         if (empId == 0) return new HashMap<>();
 
         Optional<EmployeeDetail> opt = employeeDetailRepository.findByEmpIdAndIsActiveAndIsDeleted(empId, true, false);
-        if (opt.isEmpty()) throw new RuntimeException("Employee Details Not Found");
+        if (opt.isEmpty()) return new HashMap<>();
 
         EmployeeDetail ed = opt.get();
         Map<String, Object> result = new HashMap<>();

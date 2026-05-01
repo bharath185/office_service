@@ -3,7 +3,7 @@ package com.officeconnect.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NewDDLegalEntityViewModel {
-    @JsonProperty("LeId")
+    @JsonProperty("LEId")
     private Integer leId;
     @JsonProperty("CompId")
     private Integer compId;
