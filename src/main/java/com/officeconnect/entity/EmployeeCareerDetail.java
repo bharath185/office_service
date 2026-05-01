@@ -22,10 +22,12 @@ public class EmployeeCareerDetail {
     private String designation;
 
     @Column(name = "FromDate")
-    private String fromDate;
+    @Temporal(TemporalType.DATE)
+    private Date fromDate;
 
     @Column(name = "ToDate")
-    private String toDate;
+    @Temporal(TemporalType.DATE)
+    private Date toDate;
 
     @Column(name = "Experience")
     private String experience;
@@ -113,11 +115,11 @@ public class EmployeeCareerDetail {
     public String getDesignation() { return designation; }
     public void setDesignation(String designation) { this.designation = designation; }
 
-    public String getFromDate() { return fromDate; }
-    public void setFromDate(String fromDate) { this.fromDate = fromDate; }
+    public Date getFromDate() { return fromDate; }
+    public void setFromDate(Date fromDate) { this.fromDate = fromDate; }
 
-    public String getToDate() { return toDate; }
-    public void setToDate(String toDate) { this.toDate = toDate; }
+    public Date getToDate() { return toDate; }
+    public void setToDate(Date toDate) { this.toDate = toDate; }
 
     public String getExperience() { return experience; }
     public void setExperience(String experience) { this.experience = experience; }

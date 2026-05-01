@@ -31,10 +31,12 @@ public class EmployeeEducation {
     private String filed;
 
     @Column(name = "StartDate")
-    private String startDate;
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
 
     @Column(name = "EndDate")
-    private String endDate;
+    @Temporal(TemporalType.DATE)
+    private Date endDate;
 
     @Column(name = "Grade")
     private String grade;
@@ -89,11 +91,11 @@ public class EmployeeEducation {
     public String getFiled() { return filed; }
     public void setFiled(String filed) { this.filed = filed; }
 
-    public String getStartDate() { return startDate; }
-    public void setStartDate(String startDate) { this.startDate = startDate; }
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
 
-    public String getEndDate() { return endDate; }
-    public void setEndDate(String endDate) { this.endDate = endDate; }
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
 
     public String getGrade() { return grade; }
     public void setGrade(String grade) { this.grade = grade; }

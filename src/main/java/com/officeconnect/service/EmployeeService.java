@@ -2184,8 +2184,8 @@ public class EmployeeService {
             edu.setOthers(parseString(model.get("Others")));
         }
         edu.setFiled(parseString(model.get("Filed")));
-        edu.setStartDate(parseString(model.get("StartDate")));
-        edu.setEndDate(parseString(model.get("EndDate")));
+        edu.setStartDate(parseDateFromObject(model.get("StartDate")));
+        edu.setEndDate(parseDateFromObject(model.get("EndDate")));
         edu.setGrade(parseString(model.get("Grade")));
         edu.setDescription(parseString(model.get("Description")));
         edu.setPath(parseString(model.get("Path")));
@@ -2213,8 +2213,8 @@ public class EmployeeService {
         EmployeeEducation edu = opt.get();
         if (model.containsKey("School")) edu.setSchool(parseString(model.get("School")));
         if (model.containsKey("Filed")) edu.setFiled(parseString(model.get("Filed")));
-        if (model.containsKey("StartDate")) edu.setStartDate(parseString(model.get("StartDate")));
-        if (model.containsKey("EndDate")) edu.setEndDate(parseString(model.get("EndDate")));
+        if (model.containsKey("StartDate")) edu.setStartDate(parseDateFromObject(model.get("StartDate")));
+        if (model.containsKey("EndDate")) edu.setEndDate(parseDateFromObject(model.get("EndDate")));
         if (model.containsKey("Grade")) edu.setGrade(parseString(model.get("Grade")));
         if (model.containsKey("Description")) edu.setDescription(parseString(model.get("Description")));
         if (model.containsKey("Path")) edu.setPath(parseString(model.get("Path")));
@@ -2482,8 +2482,8 @@ public class EmployeeService {
         career.setEmpId(empId);
         career.setCompany(parseString(model.get("Company")));
         career.setDesignation(parseString(model.get("Designation")));
-        career.setFromDate(parseString(model.get("FromDate")));
-        career.setToDate(parseString(model.get("ToDate")));
+        career.setFromDate(parseDateFromObject(model.get("FromDate")));
+        career.setToDate(parseDateFromObject(model.get("ToDate")));
         career.setExperience(parseString(model.get("Experience")));
         career.setPMonth1(parseString(model.get("PMonth1")));
         career.setPaySlip1(parseString(model.get("PaySlip1")));
@@ -2525,8 +2525,8 @@ public class EmployeeService {
         EmployeeCareerDetail c = opt.get();
         if (model.containsKey("Company")) c.setCompany(parseString(model.get("Company")));
         if (model.containsKey("Designation")) c.setDesignation(parseString(model.get("Designation")));
-        if (model.containsKey("FromDate")) c.setFromDate(parseString(model.get("FromDate")));
-        if (model.containsKey("ToDate")) c.setToDate(parseString(model.get("ToDate")));
+        if (model.containsKey("FromDate")) c.setFromDate(parseDateFromObject(model.get("FromDate")));
+        if (model.containsKey("ToDate")) c.setToDate(parseDateFromObject(model.get("ToDate")));
         if (model.containsKey("Experience")) c.setExperience(parseString(model.get("Experience")));
         if (model.containsKey("PMonth1")) c.setPMonth1(parseString(model.get("PMonth1")));
         if (model.containsKey("PaySlip1")) c.setPaySlip1(parseString(model.get("PaySlip1")));
@@ -3082,8 +3082,72 @@ public class EmployeeService {
     }
 
     public Map<String, Object> updateEmployeeContactInformation(Map<String, Object> model) {
+        Integer loginId = parseInteger(model.get("LoginId"));
         Integer id = parseInteger(model.get("Id"));
-        if (id == 0) throw new RuntimeException("Id is Missing");
+        Integer empId = parseInteger(model.get("EmpId"));
+        if (loginId == 0) throw new RuntimeException("LoginId is Missing");
+
+        if (id == 0) {
+            EmployeeDetail ed = new EmployeeDetail();
+            ed.setEmpId(empId);
+            ed.setAMobileNo(parseString(model.get("AMobileNo")));
+            ed.setPMailId(parseString(model.get("PMailId")));
+            ed.setFatherName(parseString(model.get("FatherName")));
+            ed.setMotherName(parseString(model.get("MotherName")));
+            ed.setHusbandName(parseString(model.get("HusbandName")));
+            ed.setFContactNo(parseString(model.get("FContactNo")));
+            ed.setMContactNo(parseString(model.get("MContactNo")));
+            ed.setHContactNo(parseString(model.get("HContactNo")));
+            ed.setEContactNo(parseString(model.get("EContactNo")));
+            ed.setEContactName(parseString(model.get("EContactName")));
+            ed.setEContactRelationship(parseString(model.get("EContactRelationship")));
+            ed.setEContactNo1(parseString(model.get("EContactNo1")));
+            ed.setEContactName1(parseString(model.get("EContactName1")));
+            ed.setEContactRelationship1(parseString(model.get("EContactRelationship1")));
+            ed.setEContactNo2(parseString(model.get("EContactNo2")));
+            ed.setEContactName2(parseString(model.get("EContactName2")));
+            ed.setEContactRelationship2(parseString(model.get("EContactRelationship2")));
+            ed.setHeight(parseString(model.get("Height")));
+            ed.setWeight(parseString(model.get("Weight")));
+            ed.setDateOfAnniversary(parseStringDate(model.get("DateOfAnniversary")));
+            ed.setDisability(parseString(model.get("Disability")));
+            ed.setTotalExperience(parseString(model.get("TotalExperience")));
+            ed.setRelevantExperience(parseString(model.get("RelevantExperience")));
+            ed.setEcActivities(parseString(model.get("ECActivities")));
+            ed.setSports(parseString(model.get("Sports")));
+            ed.setCurrentDoorNumber(parseString(model.get("CurrentDoorNumber")));
+            ed.setCurrentBuildingName(parseString(model.get("CurrentBuildingName")));
+            ed.setCurrentStreet(parseString(model.get("CurrentStreet")));
+            ed.setCurrentLocation(parseString(model.get("CurrentLocation")));
+            ed.setCurrentCity(parseString(model.get("CurrentCity")));
+            ed.setCurrentState(parseString(model.get("CurrentState")));
+            ed.setCurrentCountry(parseString(model.get("CurrentCountry")));
+            ed.setCurrentPinCode(parseString(model.get("CurrentPinCode")));
+            ed.setPermanentDoorNumber(parseString(model.get("PermanentDoorNumber")));
+            ed.setPermanentBuildingName(parseString(model.get("PermanentBuildingName")));
+            ed.setPermanentStreet(parseString(model.get("PermanentStreet")));
+            ed.setPermanentLocation(parseString(model.get("PermanentLocation")));
+            ed.setPermanentCity(parseString(model.get("PermanentCity")));
+            ed.setPermanentState(parseString(model.get("PermanentState")));
+            ed.setPermanentCountry(parseString(model.get("PermanentCountry")));
+            ed.setPermanentPinCode(parseString(model.get("PermanentPinCode")));
+            ed.setCaste(parseString(model.get("Caste")));
+            ed.setRegion(parseString(model.get("Region")));
+            ed.setCountry(parseString(model.get("Country")));
+            ed.setNationality(parseString(model.get("Nationality")));
+            ed.setCreatedBy(loginId);
+            ed.setCreatedDate(new Date());
+            ed.setLastUpdatedBy(loginId);
+            ed.setLastUpdatedDate(new Date());
+            ed.setIsActive(true);
+            ed.setIsUpdated(false);
+            ed.setIsDeleted(false);
+            employeeDetailRepository.save(ed);
+
+            Map<String, Object> result = new HashMap<>();
+            result.put("msg", "Added");
+            return result;
+        }
 
         Optional<EmployeeDetail> opt = employeeDetailRepository.findById(id);
         if (opt.isEmpty()) throw new RuntimeException("Employee Details Not Found");
