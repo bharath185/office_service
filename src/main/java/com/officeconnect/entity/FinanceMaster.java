@@ -1,0 +1,97 @@
+package com.officeconnect.entity;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "FinanceMaster")
+public class FinanceMaster {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "FinanceId")
+    private Integer financeId;
+
+    @Column(name = "FinanceType")
+    private String financeType;
+
+    @Column(name = "FinanceName")
+    private String financeName;
+
+    @Column(name = "FinanceCode")
+    private String financeCode;
+
+    @Column(name = "Description")
+    private String description;
+
+    @Column(name = "CompId")
+    private Integer compId;
+
+    @Column(name = "BranchId")
+    private Integer branchId;
+
+    @Column(name = "CreatedBy")
+    private Integer createdBy;
+
+    @Column(name = "CreatedDate")
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
+
+    @Column(name = "LastUpdatedBy")
+    private Integer lastUpdatedBy;
+
+    @Column(name = "LastUpdatedDate")
+    @Temporal(TemporalType.DATE)
+    private Date lastUpdatedDate;
+
+    @Column(name = "IsActive")
+    private Boolean isActive;
+
+    @Column(name = "IsUpdated")
+    private Boolean isUpdated;
+
+    @Column(name = "IsDeleted")
+    private Boolean isDeleted;
+
+    public Integer getFinanceId() { return financeId; }
+    public void setFinanceId(Integer financeId) { this.financeId = financeId; }
+
+    public String getFinanceType() { return financeType; }
+    public void setFinanceType(String financeType) { this.financeType = financeType; }
+
+    public String getFinanceName() { return financeName; }
+    public void setFinanceName(String financeName) { this.financeName = financeName; }
+
+    public String getFinanceCode() { return financeCode; }
+    public void setFinanceCode(String financeCode) { this.financeCode = financeCode; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Integer getCompId() { return compId; }
+    public void setCompId(Integer compId) { this.compId = compId; }
+
+    public Integer getBranchId() { return branchId; }
+    public void setBranchId(Integer branchId) { this.branchId = branchId; }
+
+    public Integer getCreatedBy() { return createdBy; }
+    public void setCreatedBy(Integer createdBy) { this.createdBy = createdBy; }
+
+    public Date getCreatedDate() { return createdDate; }
+    public void setCreatedDate(Date createdDate) { this.createdDate = createdDate; }
+
+    public Integer getLastUpdatedBy() { return lastUpdatedBy; }
+    public void setLastUpdatedBy(Integer lastUpdatedBy) { this.lastUpdatedBy = lastUpdatedBy; }
+
+    public Date getLastUpdatedDate() { return lastUpdatedDate; }
+    public void setLastUpdatedDate(Date lastUpdatedDate) { this.lastUpdatedDate = lastUpdatedDate; }
+
+    public Boolean getIsActive() { return isActive; }
+    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+
+    public Boolean getIsUpdated() { return isUpdated; }
+    public void setIsUpdated(Boolean isUpdated) { this.isUpdated = isUpdated; }
+
+    public Boolean getIsDeleted() { return isDeleted; }
+    public void setIsDeleted(Boolean isDeleted) { this.isDeleted = isDeleted; }
+}

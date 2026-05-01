@@ -1,0 +1,12 @@
+All previously NotImplemented endpoints are now implemented!
+- Employee: GetAllFinanceMaster, GetAllApproverWorkType, GetAllEducationDoc, GetEmpProjects, GetEmpEducationDetails, GetEmpDocuments, GetEmployeeTimeline, GetEmployeeStatusHistory, ExportEmployeeList, GetAllEmpRoles - IMPLEMENTED
+- Attendance: GetAttendanceByMonthYear, GetAttendanceByWeek, GetAttendanceByDateRange, GetAttendanceByDepartment, GetOvertimeAttendance, GetAttendanceByLocation, GetAttendanceByTeam - IMPLEMENTED
+- Holiday: GetAllHolidays, GetHolidayCount - IMPLEMENTED
+- Access: GetAccessDetails, GetAllRoles, GetAllModules, GetAccessRoles, GetAllPermissions - IMPLEMENTED
+- BusinessEntity: GetAllCompany, GetAllLegalEntity, GetAllLocation - IMPLEMENTED
+- WFHLogin: GetAllWFHDays - IMPLEMENTED
+- Notification: GetNotificationHistory - IMPLEMENTED
+
+Project compiles successfully. Remaining skeleton endpoints:
+- Employee: UploadAttendance, UploadFileCareer, UploadFileEducation, UploadFileGovt, UploadImage, UploadMultiAttendance, UploadSingleAttendance, ERPContractAttendanceDetails, ERPProjectmappingDetails, FetchEmployee, UploadProfilePicture, UpdateProfilePhoto, GetAllEmployeeProjects
+- BusinessEntity: AddCompany, UpdateCompany, DeleteCompany, GetCompany, AddLegalEntity, UpdateLegalEntity, DeleteLegalEntity, GetLegalEntity

@@ -1,0 +1,132 @@
+package com.officeconnect.controller;
+
+import com.officeconnect.service.HolidayService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/Holiday")
+public class HolidayController {
+
+    @Autowired
+    private HolidayService holidayService;
+
+    @PostMapping("/GetAllHoliday")
+    public ResponseEntity<?> getAllHoliday(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> result = holidayService.getAllHoliday(model);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/GetHolidayByLocation")
+    public ResponseEntity<?> getHolidayByLocation(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> result = holidayService.getHolidayByLocation(model);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/UpdateHolidayStatus")
+    public ResponseEntity<?> updateHolidayStatus(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> result = holidayService.updateHolidayStatus(model);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    // Real endpoints (Use existing service where possible)
+    @PostMapping("/GetAllHolidays")
+    public ResponseEntity<?> getAllHolidays(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.getAllHoliday(model);
+            List<Map<String, Object>> list = new java.util.ArrayList<>();
+            list.add(data);
+            return ResponseEntity.ok(list);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/GetHolidaySummary")
+    public ResponseEntity<?> getHolidaySummary(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.getHolidaySummary(model);
+            return ResponseEntity.ok(data);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/AddHolidayType")
+    public ResponseEntity<?> addHolidayType(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.addHolidayType(model);
+            return ResponseEntity.ok(data);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/UpdateHolidayType")
+    public ResponseEntity<?> updateHolidayType(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.updateHolidayType(model);
+            return ResponseEntity.ok(data);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/DeleteHolidayType")
+    public ResponseEntity<?> deleteHolidayType(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.deleteHolidayType(model);
+            return ResponseEntity.ok(data);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/GetHolidayType")
+    public ResponseEntity<?> getHolidayType(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> data = holidayService.getHolidayType(model);
+            return ResponseEntity.ok(data);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+    @PostMapping("/GetHolidayCount")
+    public ResponseEntity<?> getHolidayCount(@RequestBody Map<String, Object> model) {
+        try {
+            Map<String, Object> result = holidayService.getHolidayCount(model);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("StatusCode", 404, "Message", ex.getMessage()));
+        }
+    }
+
+}

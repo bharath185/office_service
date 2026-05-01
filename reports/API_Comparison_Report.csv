@@ -1,0 +1,344 @@
+Controller,.NET Endpoint,Java Endpoint,Status,Notes
+Login,/Login/UserName,/Login/Login,IMPLEMENTED,Working with JWT
+Login,/Login/ChangePassword,/Login/ChangePassword,IMPLEMENTED,Password change
+Login,/Login/ForgotPassword,/Login/ForgotPassword,IMPLEMENTED,Password recovery
+Employee,/Employee/DDCompany,/Employee/DDCompany,IMPLEMENTED,Company dropdown
+Employee,/Employee/DDLegalEntity,/Employee/DDLegalEntity,IMPLEMENTED,Legal entity dropdown
+Employee,/Employee/DDAuthorisedEntity,/Employee/DDAuthorisedEntity,IMPLEMENTED,Authorized entity dropdown
+Employee,/Employee/DDBusinessUnit,/Employee/DDBusinessUnit,IMPLEMENTED,Business unit dropdown
+Employee,/Employee/DDLocation,/Employee/DDLocation,IMPLEMENTED,Location dropdown
+Employee,/Employee/GetAllEmployee,/Employee/GetAllEmployee,IMPLEMENTED,Get all employees
+Employee,/Employee/GetEmployee,/Employee/GetEmployeeById,IMPLEMENTED,Get employee by ID
+Employee,/Employee/AddEmployee,/Employee/SaveEmployee,IMPLEMENTED,Add new employee
+Employee,/Employee/UpdateEmployee,/Employee/UpdateEmployee,IMPLEMENTED,Update employee
+Employee,/Employee/DeleteEmployee,/Employee/DeleteEmployee,IMPLEMENTED,Delete employee
+Employee,/Employee/DDSalutation,/Employee/DDSalutation,IMPLEMENTED,Salutation dropdown
+Employee,/Employee/DDGender,/Employee/DDGender,IMPLEMENTED,Gender dropdown
+Employee,/Employee/DDEmpType,/Employee/DDEmpType,IMPLEMENTED,Employee type dropdown
+Employee,/Employee/DDApprover,/Employee/DDApprover,IMPLEMENTED,Approver dropdown
+Employee,/Employee/FetchEmployee,/Employee/FetchEmployee,IMPLEMENTED,Fetch employees
+Employee,/Employee/ActiveEmployee,/Employee/ActiveEmployee,IMPLEMENTED,Activate employee
+Employee,/Employee/DeActiveEmployee,/Employee/DeActiveEmployee,IMPLEMENTED,Deactivate employee
+Employee,/Employee/SelectEmployee,/Employee/SelectEmployee,IMPLEMENTED,Select employee
+Employee,/Employee/GetTotalEmployeeCount,/Employee/GetTotalEmployeeCount,IMPLEMENTED,Total employee count
+Employee,/Employee/DDGetLocation,/Employee/DDGetLocation,IMPLEMENTED,Location dropdown
+Employee,/Employee/DDselectEmployee,/Employee/DDselectEmployee,IMPLEMENTED,Employee dropdown
+Employee,/Employee/DashboardEmployee,/Employee/DashboardEmployee,IMPLEMENTED,Dashboard employees
+Employee,/Employee/GetAllWorkType,/Employee/GetAllWorkType,IMPLEMENTED,Work types
+Employee,/Employee/GetWorkType,/Employee/GetWorkType,IMPLEMENTED,Get work type
+Employee,/Employee/AddWorkType,/Employee/AddWorkType,IMPLEMENTED,Add work type
+Employee,/Employee/UpdateWorkType,/Employee/UpdateWorkType,IMPLEMENTED,Update work type
+Employee,/Employee/DeleteWorkType,/Employee/DeleteWorkType,IMPLEMENTED,Delete work type
+Employee,/Employee/ApproveWorkType,/Employee/ApproveWorkType,IMPLEMENTED,Approve work type
+Employee,/Employee/RejectWorkType,/Employee/RejectWorkType,IMPLEMENTED,Reject work type
+Employee,/Employee/DDEmployeeApprover,/Employee/DDEmployeeApprover,IMPLEMENTED,Employee approver dropdown
+Employee,/Employee/EmployeeAttendance,/Employee/EmployeeAttendance,IMPLEMENTED,Employee attendance
+Employee,/Employee/AttendanceFilter,/Employee/AttendanceFilter,IMPLEMENTED,Attendance filter
+Employee,/Employee/EachEmployeeAttendance,/Employee/EachEmployeeAttendance,IMPLEMENTED,Each employee attendance
+Employee,/Employee/ReportingEmployeeAttendance,/Employee/ReportingEmployeeAttendance,IMPLEMENTED,Reporting employee attendance
+Employee,/Employee/OnSiteLogin,/Employee/OnSiteLogin,IMPLEMENTED,On-site login
+Employee,/Employee/OnSiteLogout,/Employee/OnSiteLogout,IMPLEMENTED,On-site logout
+Employee,/Employee/GetAllLoginLogs,/Employee/GetAllLoginLogs,IMPLEMENTED,All login logs
+Employee,/Employee/GetAllEmpAccDetails,/Employee/GetAllEmpAccDetails,IMPLEMENTED,All employee account details
+Employee,/Employee/GetEmpAccDetails,/Employee/GetEmpAccDetails,IMPLEMENTED,Employee account details
+Employee,/Employee/AddEmpAccDetails,/Employee/AddEmpAccDetails,IMPLEMENTED,Add employee account details
+Employee,/Employee/UpdateEmpAccDetails,/Employee/UpdateEmpAccDetails,IMPLEMENTED,Update employee account details
+Employee,/Employee/DeleteEmpAccDetails,/Employee/DeleteEmpAccDetails,IMPLEMENTED,Delete employee account details
+Employee,/Employee/GetAllEmpCareerDetails,/Employee/GetAllEmpCareerDetails,IMPLEMENTED,All employee career details
+Employee,/Employee/GetEmpCareerDetails,/Employee/GetEmpCareerDetails,IMPLEMENTED,Employee career details
+Employee,/Employee/AddEmpCareerDetails,/Employee/AddEmpCareerDetails,IMPLEMENTED,Add employee career details
+Employee,/Employee/UpdateEmpCareerDetails,/Employee/UpdateEmpCareerDetails,IMPLEMENTED,Update employee career details
+Employee,/Employee/DeleteEmpCareerDetails,/Employee/DeleteEmpCareerDetails,IMPLEMENTED,Delete employee career details
+Employee,/Employee/UploadImage,/Employee/UploadImage,SKELETON,File upload placeholder
+Employee,/Employee/UploadFileEducation,/Employee/UploadFileEducation,SKELETON,File upload placeholder
+Employee,/Employee/UploadFileGovt,/Employee/UploadFileGovt,SKELETON,File upload placeholder
+Employee,/Employee/UploadFileCareer,/Employee/UploadFileCareer,SKELETON,File upload placeholder
+Employee,/Employee/UploadAttendance,/Employee/UploadAttendance,SKELETON,Attendance upload placeholder
+Employee,/Employee/UploadMultiAttendance,/Employee/UploadMultiAttendance,SKELETON,Multi attendance upload
+Employee,/Employee/UploadSingleAttendance,/Employee/UploadSingleAttendance,SKELETON,Single attendance upload
+Employee,/Employee/ERPContractAttendanceDetails,/Employee/ERPContractAttendanceDetails,SKELETON,ERP contract attendance
+Employee,/Employee/ERPProjectmappingDetails,/Employee/ERPProjectmappingDetails,SKELETON,ERP project mapping
+Employee,/Employee/DashboardDetails,/Employee/DashboardDetails,IMPLEMENTED,Dashboard details
+Employee,/Employee/CreateShift,/Employee/CreateShift,IMPLEMENTED,Create shift
+Employee,/Employee/CreateCompanySetting,/Employee/CreateCompanySetting,IMPLEMENTED,Create company setting
+Employee,/Employee/CheckHalfDayLoss,/Employee/CheckHalfDayLoss,IMPLEMENTED,Check half day loss
+Employee,/Employee/GetWorkHours,/Employee/GetWorkHours,IMPLEMENTED,Get work hours
+Employee,/Employee/GetAllPages,/Employee/GetAllPages,IMPLEMENTED,Get all pages
+Employee,/Employee/SubmitAccessControls,/Employee/SubmitAccessControls,IMPLEMENTED,Submit access controls
+Employee,/Employee/GetAllEmployeeContactInformation,/Employee/GetAllEmployeeContactInformation,IMPLEMENTED,All employee contact info
+Employee,/Employee/GetEmployeeContactInformation,/Employee/GetEmployeeContactInformation,IMPLEMENTED,Employee contact info
+Employee,/Employee/RelievedEmployee,/Employee/RelievedEmployee,IMPLEMENTED,Relieved employees
+Employee,/Employee/GetAttendanceSource,/Employee/GetAttendanceSource,IMPLEMENTED,Attendance source
+Employee,/Employee/GetConsolidatedAttendanceData,/Employee/GetConsolidatedAttendanceData,IMPLEMENTED,Consolidated attendance data
+Employee,/Employee/DDEducationDoc,/Employee/DDEducationDoc,IMPLEMENTED,Education doc dropdown
+Employee,/Employee/DDGovtDoc,/Employee/DDGovtDoc,IMPLEMENTED,Govt doc dropdown
+Employee,/Employee/GetEducationDoc,/Employee/GetEducationDoc,IMPLEMENTED,Get education doc
+Employee,/Employee/AddEducationDoc,/Employee/AddEducationDoc,IMPLEMENTED,Add education doc
+Employee,/Employee/UpdateEducationDoc,/Employee/UpdateEducationDoc,IMPLEMENTED,Update education doc
+Employee,/Employee/DeleteEducationDoc,/Employee/DeleteEducationDoc,IMPLEMENTED,Delete education doc
+Employee,/Employee/GetAllGovtDoc,/Employee/GetAllGovtDoc,IMPLEMENTED,All govt docs
+Employee,/Employee/GetGovtDoc,/Employee/GetGovtDoc,IMPLEMENTED,Get govt doc
+Employee,/Employee/AddGovtDoc,/Employee/AddGovtDoc,IMPLEMENTED,Add govt doc
+Employee,/Employee/UpdateGovtDoc,/Employee/UpdateGovtDoc,IMPLEMENTED,Update govt doc
+Employee,/Employee/DeleteGovtDoc,/Employee/DeleteGovtDoc,IMPLEMENTED,Delete govt doc
+Employee,/Employee/ExportEmployeeList,/Employee/ExportEmployeeList,SKELETON,Export employee list
+Employee,/Employee/GetEmployeeTimeline,/Employee/GetEmployeeTimeline,SKELETON,Employee timeline
+Employee,/Employee/GetEmployeeStatusHistory,/Employee/GetEmployeeStatusHistory,SKELETON,Employee status history
+Employee,/Employee/GetEmpProjects,/Employee/GetEmpProjects,SKELETON,Employee projects
+Employee,/Employee/GetEmpEducationDetails,/Employee/GetEmpEducationDetails,SKELETON,Employee education details
+Employee,/Employee/GetEmpDocuments,/Employee/GetEmpDocuments,SKELETON,Employee documents
+Employee,/Employee/GetEmpAddressDetails,/Employee/GetEmpAddressDetails,SKELETON,Employee address details
+Employee,/Employee/GetEmpPhoneDetails,/Employee/GetEmpPhoneDetails,SKELETON,Employee phone details
+Employee,/Employee/GetEmpEmergencyContacts,/Employee/GetEmpEmergencyContacts,SKELETON,Employee emergency contacts
+Employee,/Employee/GetAllEmpRoles,/Employee/GetAllEmpRoles,SKELETON,All employee roles
+Employee,/Employee/GetAllFinanceMaster,/Employee/GetAllFinanceMaster,SKELETON,All finance master
+Employee,/Employee/GetAllApproverWorkType,/Employee/GetAllApproverWorkType,SKELETON,Approver work type
+Employee,/Employee/GetAllEducationDoc,/Employee/GetAllEducationDoc,SKELETON,All education docs
+Employee,/Employee/UploadProfilePicture,/Employee/UploadProfilePicture,SKELETON,Profile picture upload
+Employee,/Employee/UpdateProfilePhoto,/Employee/UpdateProfilePhoto,SKELETON,Profile photo update
+Attendance,/Attendance/GetAllAttendance,/Attendance/GetAllAttendance,IMPLEMENTED,All attendance
+Attendance,/Attendance/GetAttendanceByEmployee,/Attendance/GetAttendanceByEmployee,IMPLEMENTED,Attendance by employee
+Attendance,/Attendance/GetAttendanceByDate,/Attendance/GetAttendanceByDate,IMPLEMENTED,Attendance by date
+Attendance,/Attendance/GetAttendanceByMonth,/Attendance/GetAttendanceByMonth,SKELETON,Attendance by month
+Attendance,/Attendance/GetAttendanceByQuarter,/Attendance/GetAttendanceByQuarter,SKELETON,Attendance by quarter
+Attendance,/Attendance/GetAttendanceYearly,/Attendance/GetAttendanceYearly,SKELETON,Yearly attendance
+Attendance,/Attendance/ProcessAttendance,/Attendance/ProcessAttendance,IMPLEMENTED,Process attendance
+Attendance,/Attendance/ManualAttendance,/Attendance/ManualAttendance,IMPLEMENTED,Manual attendance
+Attendance,/Attendance/GetAttendanceSummary,/Attendance/GetAttendanceSummary,IMPLEMENTED,Attendance summary
+Attendance,/Attendance/GetMonthlyAttendance,/Attendance/GetMonthlyAttendance,IMPLEMENTED,Monthly attendance
+Attendance,/Attendance/GetAttendanceByMonthYear,/Attendance/GetAttendanceByMonthYear,IMPLEMENTED,Attendance by month year
+Attendance,/Attendance/GetAttendanceByWeek,/Attendance/GetAttendanceByWeek,IMPLEMENTED,Attendance by week
+Attendance,/Attendance/GetAttendanceByDateRange,/Attendance/GetAttendanceByDateRange,IMPLEMENTED,Attendance by date range
+Attendance,/Attendance/GetAttendanceByDepartment,/Attendance/GetAttendanceByDepartment,IMPLEMENTED,Attendance by department
+Attendance,/Attendance/GetOvertimeAttendance,/Attendance/GetOvertimeAttendance,IMPLEMENTED,Overtime attendance
+Attendance,/Attendance/GetExceptionAttendance,/Attendance/GetExceptionAttendance,IMPLEMENTED,Exception attendance
+Attendance,/Attendance/GetAttendanceByLocation,/Attendance/GetAttendanceByLocation,IMPLEMENTED,Attendance by location
+Attendance,/Attendance/GetAttendanceByTeam,/Attendance/GetAttendanceByTeam,IMPLEMENTED,Attendance by team
+Holiday,/Holiday/GetAllHoliday,/Holiday/GetAllHoliday,IMPLEMENTED,All holidays
+Holiday,/Holiday/GetHolidayByLocation,/Holiday/GetHolidayByLocation,IMPLEMENTED,Holidays by location
+Holiday,/Holiday/UpdateHolidayStatus,/Holiday/UpdateHolidayStatus,IMPLEMENTED,Update holiday status
+Holiday,/Holiday/GetAllHolidays,/Holiday/GetAllHolidays,IMPLEMENTED,All holidays list
+Holiday,/Holiday/GetHolidaySummary,/Holiday/GetHolidaySummary,IMPLEMENTED,Holiday summary
+Holiday,/Holiday/AddHolidayType,/Holiday/AddHolidayType,IMPLEMENTED,Add holiday type
+Holiday,/Holiday/UpdateHolidayType,/Holiday/UpdateHolidayType,IMPLEMENTED,Update holiday type
+Holiday,/Holiday/DeleteHolidayType,/Holiday/DeleteHolidayType,IMPLEMENTED,Delete holiday type
+Holiday,/Holiday/GetHolidayType,/Holiday/GetHolidayType,IMPLEMENTED,Get holiday type
+Holiday,/Holiday/GetHolidayCount,/Holiday/GetHolidayCount,IMPLEMENTED,Holiday count
+Access,/Access/CreatePolicy,/Access/CreatePolicy,IMPLEMENTED,Create policy
+Access,/Access/GetAllPolicies,/Access/GetAllPolicies,IMPLEMENTED,All policies
+Access,/Access/UpdatePolicy,/Access/UpdatePolicy,IMPLEMENTED,Update policy
+Access,/Access/DeletePolicy,/Access/DeletePolicy,IMPLEMENTED,Delete policy
+Access,/Access/AddRole,/Access/AddRole,IMPLEMENTED,Add role
+Access,/Access/GetAccessDetails,/Access/GetAccessDetails,IMPLEMENTED,Access details
+Access,/Access/GetAllRoles,/Access/GetAllRoles,IMPLEMENTED,All roles
+Access,/Access/GetAllModules,/Access/GetAllModules,IMPLEMENTED,All modules
+Access,/Access/UpdateRole,/Access/UpdateRole,IMPLEMENTED,Update role
+Access,/Access/DeleteRole,/Access/DeleteRole,IMPLEMENTED,Delete role
+Access,/Access/GetRole,/Access/GetRole,IMPLEMENTED,Get role
+Access,/Access/GetAllRole,/Access/GetAllRole,IMPLEMENTED,All roles
+Access,/Access/GetAccessRoles,/Access/GetAccessRoles,IMPLEMENTED,Access roles
+Access,/Access/GetAllPermissions,/Access/GetAllPermissions,IMPLEMENTED,All permissions
+Access,/Access/DDRole,/Access/DDRole,IMPLEMENTED,Role dropdown
+Access,/Access/AddModule,/Access/AddModule,IMPLEMENTED,Add module
+Access,/Access/UpdateModule,/Access/UpdateModule,IMPLEMENTED,Update module
+Access,/Access/DeleteModule,/Access/DeleteModule,IMPLEMENTED,Delete module
+Access,/Access/GetModule,/Access/GetModule,IMPLEMENTED,Get module
+Access,/Access/GetAllModule,/Access/GetAllModule,IMPLEMENTED,All modules
+Access,/Access/DDModule,/Access/DDModule,IMPLEMENTED,Module dropdown
+Access,/Access/AddSubModule,/Access/AddSubModule,IMPLEMENTED,Add submodule
+Access,/Access/UpdateSubModule,/Access/UpdateSubModule,IMPLEMENTED,Update submodule
+Access,/Access/DeleteSubModule,/Access/DeleteSubModule,IMPLEMENTED,Delete submodule
+Access,/Access/GetSubModule,/Access/GetSubModule,IMPLEMENTED,Get submodule
+Access,/Access/GetAllSubModule,/Access/GetAllSubModule,IMPLEMENTED,All submodules
+Access,/Access/DDSubModule,/Access/DDSubModule,IMPLEMENTED,Submodule dropdown
+Access,/Access/AddPageModule,/Access/AddPageModule,IMPLEMENTED,Add page module
+Access,/Access/UpdatePageModule,/Access/UpdatePageModule,IMPLEMENTED,Update page module
+Access,/Access/DeletePageModule,/Access/DeletePageModule,IMPLEMENTED,Delete page module
+Access,/Access/GetPageModule,/Access/GetPageModule,IMPLEMENTED,Get page module
+Access,/Access/GetAllPageModule,/Access/GetAllPageModule,IMPLEMENTED,All page modules
+Access,/Access/DDPageModule,/Access/DDPageModule,IMPLEMENTED,Page module dropdown
+Access,/Access/AddDept,/Access/AddDept,IMPLEMENTED,Add department
+Access,/Access/UpdateDept,/Access/UpdateDept,IMPLEMENTED,Update department
+Access,/Access/DeleteDept,/Access/DeleteDept,IMPLEMENTED,Delete department
+Access,/Access/GetDept,/Access/GetDept,IMPLEMENTED,Get department
+Access,/Access/GetAllDept,/Access/GetAllDept,IMPLEMENTED,All departments
+Access,/Access/DDDept,/Access/DDDept,IMPLEMENTED,Department dropdown
+Access,/Access/DDAccess,/Access/DDAccess,IMPLEMENTED,Access dropdown
+Access,/Access/AddAccess,/Access/AddAccess,IMPLEMENTED,Add access
+Access,/Access/DeleteAccess,/Access/DeleteAccess,IMPLEMENTED,Delete access
+Access,/Access/GetAccess,/Access/GetAccess,IMPLEMENTED,Get access
+Access,/Access/GetAllAccess,/Access/GetAllAccess,IMPLEMENTED,All access
+Access,/Access/UpdateAccess,/Access/UpdateAccess,IMPLEMENTED,Update access
+Access,/Access/GetAccesspolicy,/Access/GetAccesspolicy,IMPLEMENTED,Get access policy
+Access,/Access/DDCompany,/Access/DDCompany,IMPLEMENTED,Company dropdown
+Access,/Access/DDEmployee,/Access/DDEmployee,IMPLEMENTED,Employee dropdown
+Access,/Access/DDDepartmentEmployee,/Access/DDDepartmentEmployee,IMPLEMENTED,Department employee dropdown
+Access,/Access/DDDesignation,/Access/DDDesignation,IMPLEMENTED,Designation dropdown
+Access,/Access/DDGrade,/Access/DDGrade,IMPLEMENTED,Grade dropdown
+Notification,/Notification/CreateNotification,/Notification/CreateNotification,IMPLEMENTED,Create notification
+Notification,/Notification/GetAllNotifications,/Notification/GetAllNotifications,IMPLEMENTED,All notifications
+Notification,/Notification/MarkAsRead,/Notification/MarkAsRead,IMPLEMENTED,Mark as read
+Notification,/Notification/DeleteNotification,/Notification/DeleteNotification,IMPLEMENTED,Delete notification
+Notification,/Notification/GetMyNotifications,/Notification/GetMyNotifications,IMPLEMENTED,My notifications
+Notification,/Notification/GetUnreadCount,/Notification/GetUnreadCount,IMPLEMENTED,Unread count
+Notification,/Notification/GetNotificationHistory,/Notification/GetNotificationHistory,IMPLEMENTED,Notification history
+Notification,/Notification/MarkAllAsRead,/Notification/MarkAllAsRead,IMPLEMENTED,Mark all as read
+Notification,/Notification/MarkMultipleAsRead,/Notification/MarkMultipleAsRead,IMPLEMENTED,Mark multiple as read
+Notification,/Notification/CleanupOldNotifications,/Notification/CleanupOldNotifications,IMPLEMENTED,Cleanup old notifications
+Notification,/Notification/ToggleStar,/Notification/ToggleStar,IMPLEMENTED,Toggle star
+Notification,/Notification/GetNotificationsByDateRange,/Notification/GetNotificationsByDateRange,IMPLEMENTED,Notifications by date range
+WFHLogin,/WFHLogin/Login,/WFHLogin/Login,IMPLEMENTED,WFH login
+WFHLogin,/WFHLogin/LogOut,/WFHLogin/LogOut,IMPLEMENTED,WFH logout
+WFHLogin,/WFHLogin/GetAllWFHDetails,/WFHLogin/GetAllWFHDetails,IMPLEMENTED,All WFH details
+WFHLogin,/WFHLogin/GetAllWFHAnalysis,/WFHLogin/GetAllWFHAnalysis,IMPLEMENTED,All WFH analysis
+WFHLogin,/WFHLogin/GetAllWFHFilterDetails,/WFHLogin/GetAllWFHFilterDetails,IMPLEMENTED,WFH filter details
+WFHLogin,/WFHLogin/SaveWFHAnalysis,/WFHLogin/SaveWFHAnalysis,IMPLEMENTED,Save WFH analysis
+WFHLogin,/WFHLogin/WFHEmpList,/WFHLogin/WFHEmpList,IMPLEMENTED,WFH employee list
+WFHLogin,/WFHLogin/GetAllWFHDays,/WFHLogin/GetAllWFHDays,IMPLEMENTED,All WFH days
+WFHLogin,/WFHLogin/ViewScreenShots,/WFHLogin/ViewScreenShots,IMPLEMENTED,View screenshots
+BusinessEntity,/BusinessEntity/DDCompany,/BusinessEntity/DDCompany,IMPLEMENTED,Company dropdown
+BusinessEntity,/BusinessEntity/DDLegalEntity,/BusinessEntity/DDLegalEntity,IMPLEMENTED,Legal entity dropdown
+BusinessEntity,/BusinessEntity/DDBusinessUnit,/BusinessEntity/DDBusinessUnit,IMPLEMENTED,Business unit dropdown
+BusinessEntity,/BusinessEntity/DDLocation,/BusinessEntity/DDLocation,IMPLEMENTED,Location dropdown
+BusinessEntity,/BusinessEntity/GetAllCompany,/BusinessEntity/GetAllCompany,IMPLEMENTED,All companies
+BusinessEntity,/BusinessEntity/AddCompany,/BusinessEntity/AddCompany,SKELETON,Add company
+BusinessEntity,/BusinessEntity/UpdateCompany,/BusinessEntity/UpdateCompany,SKELETON,Update company
+BusinessEntity,/BusinessEntity/DeleteCompany,/BusinessEntity/DeleteCompany,SKELETON,Delete company
+BusinessEntity,/BusinessEntity/GetCompany,/BusinessEntity/GetCompany,SKELETON,Get company
+BusinessEntity,/BusinessEntity/GetAllLegalEntity,/BusinessEntity/GetAllLegalEntity,IMPLEMENTED,All legal entities
+BusinessEntity,/BusinessEntity/AddLegalEntity,/BusinessEntity/AddLegalEntity,SKELETON,Add legal entity
+BusinessEntity,/BusinessEntity/UpdateLegalEntity,/BusinessEntity/UpdateLegalEntity,SKELETON,Update legal entity
+BusinessEntity,/BusinessEntity/DeleteLegalEntity,/BusinessEntity/DeleteLegalEntity,SKELETON,Delete legal entity
+BusinessEntity,/BusinessEntity/GetLegalEntity,/BusinessEntity/GetLegalEntity,SKELETON,Get legal entity
+BusinessEntity,/BusinessEntity/GetAllLocation,/BusinessEntity/GetAllLocation,IMPLEMENTED,All locations
+Shift,/Shift/GetAllShift,/Shift/GetAllShift,IMPLEMENTED,All shifts
+Shift,/Shift/GetShift,/Shift/GetShift,IMPLEMENTED,Get shift
+Shift,/Shift/AddShift,/Shift/AddShift,IMPLEMENTED,Add shift
+Shift,/Shift/UpdateShift,/Shift/UpdateShift,IMPLEMENTED,Update shift
+Shift,/Shift/DeleteShift,/Shift/DeleteShift,IMPLEMENTED,Delete shift
+Shift,/Shift/GetAllShiftGrouping,/Shift/GetAllShiftGrouping,IMPLEMENTED,All shift groupings
+Shift,/Shift/AddShiftGrouping,/Shift/AddShiftGrouping,IMPLEMENTED,Add shift grouping
+Shift,/Shift/DDShift,/Shift/DDShift,IMPLEMENTED,Shift dropdown
+Shift,/Shift/GetAllShiftEmployee,/Shift/GetAllShiftEmployee,IMPLEMENTED,All shift employees
+Shift,/Shift/AddShiftEmployee,/Shift/AddShiftEmployee,IMPLEMENTED,Add shift employee
+Shift,/Shift/RemoveShiftEmployee,/Shift/RemoveShiftEmployee,IMPLEMENTED,Remove shift employee
+Shift,/Shift/CreateShift,/Shift/CreateShift,IMPLEMENTED,Create shift
+Shift,/Shift/GetShiftByEmployee,/Shift/GetShiftByEmployee,IMPLEMENTED,Shift by employee
+Shift,/Shift/AssignShift,/Shift/AssignShift,IMPLEMENTED,Assign shift
+Dashboard,/Dashboard/GetEmployeeEvents,/Dashboard/GetEmployeeEvents,IMPLEMENTED,Employee events
+Dashboard,/Dashboard/GetAllHRcount,/Dashboard/GetAllHRcount,IMPLEMENTED,All HR count
+Dashboard,/Dashboard/GetDashboardSummary,/Dashboard/GetDashboardSummary,IMPLEMENTED,Dashboard summary
+Dashboard,/Dashboard/GetLeaveStatistics,/Dashboard/GetLeaveStatistics,IMPLEMENTED,Leave statistics
+Dashboard,/Dashboard/GetAttendanceStatistics,/Dashboard/GetAttendanceStatistics,IMPLEMENTED,Attendance statistics
+Payroll,/Payroll/DDPayrollSymbols,/Payroll/DDPayrollSymbols,IMPLEMENTED,Payroll symbols dropdown
+Payroll,/Payroll/DDPayrollFrequency,/Payroll/DDPayrollFrequency,IMPLEMENTED,Payroll frequency dropdown
+Payroll,/Payroll/DDPayrollPayoutType,/Payroll/DDPayrollPayoutType,IMPLEMENTED,Payout type dropdown
+Payroll,/Payroll/GetAllPayrollPayoutType,/Payroll/GetAllPayrollPayoutType,IMPLEMENTED,All payout types
+Payroll,/Payroll/GetPayrollPayoutType,/Payroll/GetPayrollPayoutType,IMPLEMENTED,Get payout type
+Payroll,/Payroll/AddPayrollPayoutType,/Payroll/AddPayrollPayoutType,IMPLEMENTED,Add payout type
+Payroll,/Payroll/UpdatePayrollPayoutType,/Payroll/UpdatePayrollPayoutType,IMPLEMENTED,Update payout type
+Payroll,/Payroll/DeletePayrollPayoutType,/Payroll/DeletePayrollPayoutType,IMPLEMENTED,Delete payout type
+Payroll,/Payroll/ActivatePayrollPayoutType,/Payroll/ActivatePayrollPayoutType,IMPLEMENTED,Activate payout type
+Payroll,/Payroll/DeactivatePayrollPayoutType,/Payroll/DeactivatePayrollPayoutType,IMPLEMENTED,Deactivate payout type
+Payroll,/Payroll/DDPayrollSegment,/Payroll/DDPayrollSegment,IMPLEMENTED,Payroll segment dropdown
+Payroll,/Payroll/GetAllPayrollPayoutTypeSegment,/Payroll/GetAllPayrollPayoutTypeSegment,IMPLEMENTED,All payout type segments
+Payroll,/Payroll/GetAllPayrollSegment,/Payroll/GetAllPayrollSegment,IMPLEMENTED,All payroll segments
+Payroll,/Payroll/GetPayrollSegment,/Payroll/GetPayrollSegment,IMPLEMENTED,Get payroll segment
+Payroll,/Payroll/AddPayrollSegment,/Payroll/AddPayrollSegment,IMPLEMENTED,Add payroll segment
+Payroll,/Payroll/UpdatePayrollSegment,/Payroll/UpdatePayrollSegment,IMPLEMENTED,Update payroll segment
+Payroll,/Payroll/DeletePayrollSegment,/Payroll/DeletePayrollSegment,IMPLEMENTED,Delete payroll segment
+Payroll,/Payroll/DDPayrollEmpList,/Payroll/DDPayrollEmpList,IMPLEMENTED,Payroll employee list
+Payroll,/Payroll/DDPayrollComponent,/Payroll/DDPayrollComponent,IMPLEMENTED,Payroll component dropdown
+Payroll,/Payroll/AddComponent,/Payroll/AddComponent,IMPLEMENTED,Add component
+Payroll,/Payroll/GetAllComponentDetails,/Payroll/GetAllComponentDetails,IMPLEMENTED,All component details
+Payroll,/Payroll/EmpCTCCalculation,/Payroll/EmpCTCCalculation,IMPLEMENTED,Employee CTC calculation
+Payroll,/Payroll/EmpPayslipGeneration,/Payroll/EmpPayslipGeneration,IMPLEMENTED,Employee payslip generation
+Payroll,/Payroll/DDPayslipSection,/Payroll/DDPayslipSection,IMPLEMENTED,Payslip section dropdown
+Payroll,/Payroll/GetPayslipSection,/Payroll/GetPayslipSection,IMPLEMENTED,Get payslip section
+Payroll,/Payroll/AddPayslipSection,/Payroll/AddPayslipSection,IMPLEMENTED,Add payslip section
+Payroll,/Payroll/UpdatePayslipSection,/Payroll/UpdatePayslipSection,IMPLEMENTED,Update payslip section
+Payroll,/Payroll/DeletePayslipSection,/Payroll/DeletePayslipSection,IMPLEMENTED,Delete payslip section
+Payroll,/Payroll/GetAllPayslipSectionComponent,/Payroll/GetAllPayslipSectionComponent,IMPLEMENTED,All payslip section components
+Payroll,/Payroll/GetPayslipSectionComponent,/Payroll/GetPayslipSectionComponent,IMPLEMENTED,Get payslip section component
+Payroll,/Payroll/AddPayslipSectionComponent,/Payroll/AddPayslipSectionComponent,IMPLEMENTED,Add payslip section component
+Payroll,/Payroll/UpdatePayslipSectionComponent,/Payroll/UpdatePayslipSectionComponent,IMPLEMENTED,Update payslip section component
+Payroll,/Payroll/DeletePayslipSectionComponent,/Payroll/DeletePayslipSectionComponent,IMPLEMENTED,Delete payslip section component
+Payroll,/Payroll/GetAllEmployeeSalaryDetails,/Payroll/GetAllEmployeeSalaryDetails,IMPLEMENTED,All employee salary details
+Payroll,/Payroll/GetEmployeeSalaryDetails,/Payroll/GetEmployeeSalaryDetails,IMPLEMENTED,Get employee salary details
+Payroll,/Payroll/AddEmployeeSalaryDetails,/Payroll/AddEmployeeSalaryDetails,IMPLEMENTED,Add employee salary details
+Payroll,/Payroll/UpdateEmployeeSalaryDetails,/Payroll/UpdateEmployeeSalaryDetails,IMPLEMENTED,Update employee salary details
+Payroll,/Payroll/DeleteEmployeeSalaryDetails,/Payroll/DeleteEmployeeSalaryDetails,IMPLEMENTED,Delete employee salary details
+Payroll,/Payroll/GetAllPayoutMappingMaster,/Payroll/GetAllPayoutMappingMaster,IMPLEMENTED,All payout mapping
+Payroll,/Payroll/GetPayoutMappingMaster,/Payroll/GetPayoutMappingMaster,IMPLEMENTED,Get payout mapping
+Payroll,/Payroll/AddPayoutMappingMaster,/Payroll/AddPayoutMappingMaster,IMPLEMENTED,Add payout mapping
+Payroll,/Payroll/UpdatePayoutMappingMaster,/Payroll/UpdatePayoutMappingMaster,IMPLEMENTED,Update payout mapping
+Payroll,/Payroll/DeletePayoutMappingMaster,/Payroll/DeletePayoutMappingMaster,IMPLEMENTED,Delete payout mapping
+Payroll,/Payroll/PayrollReportforALL,/Payroll/PayrollReportforALL,IMPLEMENTED,Payroll report for all
+Payroll,/Payroll/DDLegalEntity,/Payroll/DDLegalEntity,IMPLEMENTED,Legal entity dropdown
+Payroll,/Payroll/DDLocation,/Payroll/DDLocation,IMPLEMENTED,Location dropdown
+Payroll,/Payroll/GetPayrollComponents,/Payroll/GetPayrollComponents,IMPLEMENTED,Get payroll components
+Payroll,/Payroll/CalculatePayroll,/Payroll/CalculatePayroll,IMPLEMENTED,Calculate payroll
+Payroll,/Payroll/GeneratePayslip,/Payroll/GeneratePayslip,IMPLEMENTED,Generate payslip
+Payroll,/Payroll/GetPayslipByEmployee,/Payroll/GetPayslipByEmployee,IMPLEMENTED,Get payslip by employee
+Payroll,/Payroll/ProcessPayroll,/Payroll/ProcessPayroll,IMPLEMENTED,Process payroll
+Leave,/Leave/GetAllLeaveType,/Leave/GetAllLeaveType,IMPLEMENTED,All leave types
+Leave,/Leave/GetLeaveType,/Leave/GetLeaveType,IMPLEMENTED,Get leave type
+Leave,/Leave/AddLeaveType,/Leave/AddLeaveType,IMPLEMENTED,Add leave type
+Leave,/Leave/UpdateLeaveType,/Leave/UpdateLeaveType,IMPLEMENTED,Update leave type
+Leave,/Leave/DeleteLeaveType,/Leave/DeleteLeaveType,IMPLEMENTED,Delete leave type
+Leave,/Leave/ActivateLeaveType,/Leave/ActivateLeaveType,IMPLEMENTED,Activate leave type
+Leave,/Leave/DeactivateLeaveType,/Leave/DeactivateLeaveType,IMPLEMENTED,Deactivate leave type
+Leave,/Leave/DDLeaveType,/Leave/DDLeaveType,IMPLEMENTED,Leave type dropdown
+Leave,/Leave/DDApproveManager,/Leave/DDApproveManager,IMPLEMENTED,Approver manager dropdown
+Leave,/Leave/CompOffLeave,/Leave/CompOffLeave,IMPLEMENTED,Comp off leave
+Leave,/Leave/CompOffHours,/Leave/CompOffHours,IMPLEMENTED,Comp off hours
+Leave,/Leave/GetAllEmpCompOffLeave,/Leave/GetAllEmpCompOffLeave,IMPLEMENTED,All employee comp off
+Leave,/Leave/GetAllCompOffLeave,/Leave/GetAllCompOffLeave,IMPLEMENTED,All comp off leaves
+Leave,/Leave/ApproveCompOff,/Leave/ApproveCompOff,IMPLEMENTED,Approve comp off
+Leave,/Leave/RejectCompOff,/Leave/RejectCompOff,IMPLEMENTED,Reject comp off
+Leave,/Leave/DraftLeave,/Leave/DraftLeave,IMPLEMENTED,Draft leave
+Leave,/Leave/ApplyLeave,/Leave/ApplyLeave,IMPLEMENTED,Apply leave
+Leave,/Leave/DraftApplyLeave,/Leave/DraftApplyLeave,IMPLEMENTED,Draft apply leave
+Leave,/Leave/WithDrawLeave,/Leave/WithDrawLeave,IMPLEMENTED,Withdraw leave
+Leave,/Leave/CancelLeave,/Leave/CancelLeave,IMPLEMENTED,Cancel leave
+Leave,/Leave/DeleteDraftLeave,/Leave/DeleteDraftLeave,IMPLEMENTED,Delete draft leave
+Leave,/Leave/GetAllLeave,/Leave/GetAllLeave,IMPLEMENTED,All leaves
+Leave,/Leave/GetAllApplyManagerLeave,/Leave/GetAllApplyManagerLeave,IMPLEMENTED,All apply manager leaves
+Leave,/Leave/GetAllManagerLeave,/Leave/GetAllManagerLeave,IMPLEMENTED,All manager leaves
+Leave,/Leave/ApproveLeaveByManager,/Leave/ApproveLeaveByManager,IMPLEMENTED,Approve leave by manager
+Leave,/Leave/RejectLeaveByManager,/Leave/RejectLeaveByManager,IMPLEMENTED,Reject leave by manager
+Leave,/Leave/GetAllApplyHRLeave,/Leave/GetAllApplyHRLeave,IMPLEMENTED,All apply HR leaves
+Leave,/Leave/GetAllHRLeave,/Leave/GetAllHRLeave,IMPLEMENTED,All HR leaves
+Leave,/Leave/ApproveLeaveByHR,/Leave/ApproveLeaveByHR,IMPLEMENTED,Approve leave by HR
+Leave,/Leave/RejectLeaveByHR,/Leave/RejectLeaveByHR,IMPLEMENTED,Reject leave by HR
+Leave,/Leave/GetLeaveBalance,/Leave/GetLeaveBalance,IMPLEMENTED,Leave balance
+Leave,/Leave/LeaveRequestCount,/Leave/LeaveRequestCount,IMPLEMENTED,Leave request count
+Leave,/Leave/LeaveRequestList,/Leave/LeaveRequestList,IMPLEMENTED,Leave request list
+Visitor,/Visitor/GetAllVisitor,/Visitor/GetAllVisitor,IMPLEMENTED,All visitors
+Visitor,/Visitor/GetVisitor,/Visitor/GetVisitor,IMPLEMENTED,Get visitor
+Visitor,/Visitor/AddVisitor,/Visitor/AddVisitor,IMPLEMENTED,Add visitor
+Visitor,/Visitor/UpdateVisitor,/Visitor/UpdateVisitor,IMPLEMENTED,Update visitor
+Visitor,/Visitor/DeleteVisitor,/Visitor/DeleteVisitor,IMPLEMENTED,Delete visitor
+Visitor,/Visitor/ApproveVisitor,/Visitor/ApproveVisitor,IMPLEMENTED,Approve visitor
+Visitor,/Visitor/RejectVisitor,/Visitor/RejectVisitor,IMPLEMENTED,Reject visitor
+Visitor,/Visitor/CheckInVisitor,/Visitor/CheckInVisitor,IMPLEMENTED,Check in visitor
+Visitor,/Visitor/CheckOutVisitor,/Visitor/CheckOutVisitor,IMPLEMENTED,Check out visitor
+Visitor,/Visitor/GetVisitorHistory,/Visitor/GetVisitorHistory,IMPLEMENTED,Visitor history
+Visitor,/Visitor/DDVisitorType,/Visitor/DDVisitorType,IMPLEMENTED,Visitor type dropdown
+Performance,/Performance/GetAllGoal,/Performance/GetAllGoal,IMPLEMENTED,All goals
+Performance,/Performance/GetGoal,/Performance/GetGoal,IMPLEMENTED,Get goal
+Performance,/Performance/AddGoal,/Performance/AddGoal,IMPLEMENTED,Add goal
+Performance,/Performance/UpdateGoal,/Performance/UpdateGoal,IMPLEMENTED,Update goal
+Performance,/Performance/DeleteGoal,/Performance/DeleteGoal,IMPLEMENTED,Delete goal
+Performance,/Performance/GetAllKPI,/Performance/GetAllKPI,IMPLEMENTED,All KPIs
+Performance,/Performance/GetKPI,/Performance/GetKPI,IMPLEMENTED,Get KPI
+Performance,/Performance/AddKPI,/Performance/AddKPI,IMPLEMENTED,Add KPI
+Performance,/Performance/UpdateKPI,/Performance/UpdateKPI,IMPLEMENTED,Update KPI
+Performance,/Performance/DeleteKPI,/Performance/DeleteKPI,IMPLEMENTED,Delete KPI
+Performance,/Performance/GetAllAppraisal,/Performance/GetAllAppraisal,IMPLEMENTED,All appraisals
+Performance,/Performance/GetAppraisal,/Performance/GetAppraisal,IMPLEMENTED,Get appraisal
+Performance,/Performance/AddAppraisal,/Performance/AddAppraisal,IMPLEMENTED,Add appraisal
+Performance,/Performance/UpdateAppraisal,/Performance/UpdateAppraisal,IMPLEMENTED,Update appraisal
+Performance,/Performance/DeleteAppraisal,/Performance/DeleteAppraisal,IMPLEMENTED,Delete appraisal
+Performance,/Performance/AppraisalStatus,/Performance/AppraisalStatus,IMPLEMENTED,Appraisal status
+Performance,/Performance/GetAllBehaviouralGoal,/Performance/GetAllBehaviouralGoal,IMPLEMENTED,All behavioral goals
