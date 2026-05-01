@@ -5,6 +5,7 @@ import com.officeconnect.entity.*;
 import com.officeconnect.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -27,6 +28,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class EmployeeService {
 
     @Autowired
@@ -534,35 +536,120 @@ public class EmployeeService {
     }
 
     public EmployeeMasterViewModel updateEmployee(EmployeeMasterViewModel model) {
+        int loginId = (model.getLoginId() != null && model.getLoginId() != 0) ? model.getLoginId() : 0;
+        if (loginId == 0) throw new RuntimeException("LoginId is Missing");
+
         Optional<EmployeeMaster> empOpt = employeeMasterRepository.findById(model.getEmpId());
-        if (empOpt.isEmpty()) {
-            throw new RuntimeException("Employee not found");
-        }
-        
+        if (empOpt.isEmpty()) throw new RuntimeException("Employee not found");
+
         EmployeeMaster emp = empOpt.get();
+
+        String reportName = "";
+        if (model.getReportId() != null && model.getReportId() != 0) {
+            Optional<EmployeeMaster> reportOpt = employeeMasterRepository.findById(model.getReportId());
+            if (reportOpt.isPresent() && reportOpt.get().getEmpCode() != null) {
+                reportName = reportOpt.get().getEmpCode();
+            }
+        }
+
         emp.setCompId(model.getCompId());
-        emp.setLeId(model.getLeId());
-        emp.setBuId(model.getBuId());
-        emp.setLocationId(model.getLocationId());
-        emp.setCategoryId(model.getCategoryId());
+        emp.setLeId(model.getLeId() != null ? model.getLeId() : 0);
+        emp.setBuId(model.getBuId() != null ? model.getBuId() : 0);
+        emp.setLocationId(model.getLocationId() != null ? model.getLocationId() : 0);
+        emp.setCategoryId(model.getDeptId());
         emp.setDeptName(model.getDeptName());
         emp.setDesignationId(model.getDesignationId());
         emp.setDesignationName(model.getDesignation());
         emp.setReportId(model.getReportId());
+        emp.setReportName(reportName);
+        emp.setEmpCode(model.getEmpCode());
+        emp.setUserName(model.getEmpCode());
+        emp.setPhoto(model.getPhoto() != null ? model.getPhoto() : "");
+        emp.setSalutation(model.getSalutationId());
         emp.setFirstName(model.getFirstName());
-        emp.setMiddleName(model.getMiddleName());
+        emp.setMiddleName(model.getMiddleName() != null ? model.getMiddleName() : "");
         emp.setLastName(model.getLastName());
+        emp.setDob(parseDateFromObject(model.getDob()));
         emp.setMobileNo(model.getMobileNo());
         emp.setEmailId(model.getEmailId());
+        emp.setBloodGroup(model.getBloodGroup());
+        emp.setMaritalStatus(model.getMaritalStatus());
         emp.setGender(model.getGender());
-        emp.setEmpStatus(model.getEmpStatus());
+        emp.setInterviewDate(parseDateFromObject(model.getInterviewDate()));
+        emp.setJoiningDate(parseDateFromObject(model.getJoiningDate()));
+        emp.setEmpType(model.getEmpTypeId());
+        emp.setcEndDate(parseDateFromObject(model.getcEndDate()));
+        emp.setAuthorisedEntity(model.getAuthorisedEntity());
         emp.setIsUpdated(true);
-        emp.setLastUpdatedDate(new java.util.Date());
-        
+        emp.setLastUpdatedBy(loginId);
+        emp.setLastUpdatedDate(new Date());
+
         employeeMasterRepository.save(emp);
-        
-        model.setMsg("Employee updated successfully");
-        return model;
+
+        // Create log entry
+        EmployeeMasterLog eml = new EmployeeMasterLog();
+        eml.setEmpId(emp.getEmpId());
+        eml.setOldEmp_ID(emp.getOldEmp_ID() != null ? emp.getOldEmp_ID() : 0);
+        eml.setCompId(emp.getCompId());
+        eml.setLeId(emp.getLeId() != null ? emp.getLeId() : 0);
+        eml.setBuId(emp.getBuId() != null ? emp.getBuId() : 0);
+        eml.setLocationId(emp.getLocationId() != null ? emp.getLocationId() : 0);
+        eml.setCategoryId(emp.getCategoryId());
+        eml.setDeptName(emp.getDeptName());
+        eml.setDesignationId(emp.getDesignationId());
+        eml.setDesignationName(emp.getDesignationName());
+        eml.setReportId(emp.getReportId());
+        eml.setReportName(reportName);
+        eml.setEmpCode(emp.getEmpCode());
+        eml.setUserName(emp.getUserName());
+        eml.setPassword(emp.getPassword());
+        eml.setPhoto(emp.getPhoto() != null ? emp.getPhoto() : "");
+        eml.setSalutation(emp.getSalutation());
+        eml.setFirstName(emp.getFirstName());
+        eml.setMiddleName(emp.getMiddleName());
+        eml.setLastName(emp.getLastName());
+        eml.setDob(emp.getDob());
+        eml.setMobileNo(emp.getMobileNo());
+        eml.setEmailId(emp.getEmailId());
+        eml.setBloodGroup(emp.getBloodGroup());
+        eml.setMaritalStatus(emp.getMaritalStatus());
+        eml.setGender(emp.getGender());
+        eml.setJoiningDate(emp.getJoiningDate());
+        eml.setEmpType(emp.getEmpType());
+        eml.setEmpStatus(emp.getEmpStatus());
+        eml.setAuthorisedEntity(emp.getAuthorisedEntity());
+        eml.setIsRelieved(emp.getIsRelieved());
+        eml.setCEndDate(emp.getcEndDate());
+        eml.setIsActive(emp.getIsActive());
+        eml.setIsUpdated(true);
+        eml.setIsDeleted(false);
+        eml.setCreatedBy(loginId);
+        eml.setCreatedDate(new Date());
+        eml.setLastUpdatedBy(loginId);
+        eml.setLastUpdatedDate(new Date());
+        employeeMasterLogRepository.save(eml);
+
+        if (model.getEmpTypeId() != null && model.getEmpTypeId() > 0 && Boolean.TRUE.equals(model.getIsProbation())) {
+            List<EmpProbationTrackingHistory> pthList = empProbationTrackingHistoryRepository
+                .findByEmpIdAndIsProbationAndIsActiveAndIsDeleted(model.getEmpId(), true, true, false);
+            EmpProbationTrackingHistory pthdetails = pthList.isEmpty() ? null : pthList.get(0);
+
+            if (Boolean.TRUE.equals(model.getIsProbationConfirm()) && pthdetails != null) {
+                pthdetails.setIsProbation(false);
+                pthdetails.setConfirmBy(loginId);
+                pthdetails.setConfirmDate(parseDateFromObject(model.getProbationConfirmationDate()));
+                pthdetails.setIsPermanent(true);
+                pthdetails.setRemarks(model.getProbationRemarks());
+                pthdetails.setLastUpdatedBy(loginId);
+                pthdetails.setLastUpdatedDate(new Date());
+                pthdetails.setIsUpdated(true);
+                empProbationTrackingHistoryRepository.save(pthdetails);
+            }
+        }
+
+        EmployeeMasterViewModel result = new EmployeeMasterViewModel();
+        result.setMsg("Updated");
+        return result;
     }
 
     public List<EmployeeMasterViewModel> getAllEmployees(EmployeeMasterViewModel model) {
@@ -2289,6 +2376,10 @@ public class EmployeeService {
         return val != null ? val.toString().trim() : "";
     }
 
+    private Date parseDateFromObject(Object dateObj) {
+        return parseStringDate(dateObj);
+    }
+
     private Date parseStringDate(Object dateObj) {
         if (dateObj == null) return null;
         if (dateObj instanceof Date) return (Date) dateObj;
@@ -3082,14 +3173,267 @@ public class EmployeeService {
     }
 
     public EmployeeMasterViewModel getEmployee(EmployeeMasterViewModel model) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("msg", "Employee retrieved successfully");
-        return model;
+        int loginId = (model.getLoginId() != null && model.getLoginId() != 0) ? model.getLoginId() : 0;
+        int empId = (model.getEmpId() != null && model.getEmpId() != 0) ? model.getEmpId() : 0;
+
+        if (loginId == 0) throw new RuntimeException("LoginId is Missing");
+
+        Optional<EmployeeMaster> empOpt = employeeMasterRepository.findById(empId);
+        if (empOpt.isEmpty()) throw new RuntimeException("Employee Details Not Found");
+
+        EmployeeMaster emp = empOpt.get();
+        if (emp.getIsActive() == null || !emp.getIsActive() || emp.getIsDeleted() != null && emp.getIsDeleted()) {
+            throw new RuntimeException("Employee Details Not Found");
+        }
+
+        EmployeeMasterViewModel emvm = new EmployeeMasterViewModel();
+        emvm.setEmpId(emp.getEmpId());
+        emvm.setOldEmp_ID(emp.getOldEmp_ID());
+        emvm.setCompId(emp.getCompId());
+
+        if (emp.getCompId() != null) {
+            Optional<CompanyMaster> compOpt = companyMasterRepository.findById(emp.getCompId());
+            emvm.setCompany(compOpt.map(CompanyMaster::getCompany).orElse(""));
+        }
+
+        emvm.setLeId(emp.getLeId() != null ? emp.getLeId() : 0);
+        if (emvm.getLeId() != null && emvm.getLeId() != 0) {
+            Optional<LegalEntityMaster> leOpt = legalEntityMasterRepository.findById(emvm.getLeId());
+            emvm.setLegalEntity(leOpt.map(LegalEntityMaster::getLegalEntity).orElse(""));
+        } else {
+            emvm.setLegalEntity("");
+        }
+
+        emvm.setBuId(emp.getBuId() != null ? emp.getBuId() : 0);
+        if (emvm.getBuId() != null && emvm.getBuId() != 0) {
+            Optional<BusinessUnitMaster> buOpt = businessUnitMasterRepository.findById(emvm.getBuId());
+            emvm.setBusinessUnit(buOpt.map(BusinessUnitMaster::getBusinessUnit).orElse(""));
+        } else {
+            emvm.setBusinessUnit("");
+        }
+
+        emvm.setLocationId(emp.getLocationId() != null ? emp.getLocationId() : 0);
+        if (emvm.getLocationId() != 0) {
+            Optional<LocationMaster> locOpt = locationMasterRepository.findById(emvm.getLocationId());
+            emvm.setLocation(locOpt.map(LocationMaster::getLocation).orElse(""));
+        }
+
+        emvm.setCategoryId(emp.getCategoryId());
+        emvm.setDeptId(emp.getCategoryId());
+        emvm.setDeptName(emp.getDeptName());
+        emvm.setDesignationId(emp.getDesignationId());
+        emvm.setDesignation(emp.getDesignationName());
+        emvm.setReportId(emp.getReportId());
+        emvm.setApproverId(emp.getReportId());
+        emvm.setAuthorisedEntity(emp.getAuthorisedEntity());
+        emvm.setApprover("");
+
+        if (emp.getReportId() != null && emp.getReportId() != 0) {
+            Optional<EmployeeMaster> approverOpt = employeeMasterRepository.findById(emp.getReportId());
+            if (approverOpt.isPresent()) {
+                EmployeeMaster approver = approverOpt.get();
+                String firstName = approver.getFirstName() != null ? approver.getFirstName() : "";
+                String middleName = approver.getMiddleName() != null ? approver.getMiddleName() : "";
+                String lastName = approver.getLastName() != null ? approver.getLastName() : "";
+                String empCode = approver.getEmpCode() != null ? approver.getEmpCode() : "";
+                emvm.setApprover(firstName + " " + middleName + " " + lastName + " - " + empCode);
+            }
+        }
+
+        emvm.setEmpCode(emp.getEmpCode());
+        emvm.setUserName(emp.getUserName());
+        emvm.setPhoto(emp.getPhoto());
+        if (emvm.getPhoto() != null && !emvm.getPhoto().isEmpty() && emvm.getPhoto().contains("Uploads")) {
+            String[] parts = emvm.getPhoto().split("Uploads", 2);
+            if (parts.length > 1) {
+                emvm.setPhoto("Uploads" + parts[1]);
+            }
+        }
+
+        emvm.setSalutationId(emp.getSalutation());
+        if (emvm.getSalutationId() != null && emvm.getSalutationId() != 0) {
+            Optional<SalutationMaster> salOpt = salutationMasterRepository.findById(emvm.getSalutationId());
+            emvm.setSalutation(salOpt.map(SalutationMaster::getSalutation).orElse(""));
+        }
+
+        emvm.setFirstName(emp.getFirstName());
+        emvm.setMiddleName(emp.getMiddleName());
+        emvm.setLastName(emp.getLastName());
+        emvm.setDob(convertToJsonDateObj(emp.getDob()));
+        emvm.setMobileNo(emp.getMobileNo());
+        emvm.setEmailId(emp.getEmailId());
+        emvm.setBloodGroup(emp.getBloodGroup());
+        emvm.setMaritalStatus(emp.getMaritalStatus());
+        emvm.setGender(emp.getGender());
+        emvm.setJoiningDate(convertToJsonDateObj(emp.getJoiningDate()));
+        emvm.setInterviewDate(convertToJsonDateObj(emp.getInterviewDate()));
+        emvm.setEndDate(convertToJsonDateObj(emp.getEndDate()));
+        emvm.setEmpStatus(emp.getEmpStatus() != null ? emp.getEmpStatus().toUpperCase() : "");
+        emvm.setReason(emp.getReason());
+        emvm.setEmpTypeId(emp.getEmpType());
+        if (emvm.getEmpTypeId() != null && emvm.getEmpTypeId() != 0) {
+            Optional<EmpTypeMaster> etOpt = empTypeMasterRepository.findById(emvm.getEmpTypeId());
+            emvm.setEmpType(etOpt.map(EmpTypeMaster::getEmpType).orElse(""));
+        }
+        emvm.setcEndDate(convertToJsonDateObj(emp.getcEndDate()));
+
+        List<EmpProbationTrackingHistory> probationList = empProbationTrackingHistoryRepository.findByEmpIdAndIsActiveAndIsDeletedOrderByCreatedDateDesc(empId, true, false);
+        EmpProbationTrackingHistory probation = probationList.isEmpty() ? null : probationList.get(0);
+
+        if (probation != null) {
+            emvm.setIsProbation(probation.getIsProbation());
+            if (Boolean.TRUE.equals(probation.getIsProbation())) {
+                emvm.setProbationConfirmationStatus("Probation");
+                if (probation.getProbationEndDate() != null) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    emvm.setProbationConfirmationEffectiveDate(sdf.format(probation.getProbationEndDate()));
+                }
+                if (probation.getConfirmDate() != null) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    emvm.setProbationConfirmationDate(sdf.format(probation.getConfirmDate()));
+                }
+            } else {
+                emvm.setProbationConfirmationStatus("Permanent");
+                if (probation.getProbationEndDate() != null) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    emvm.setProbationConfirmationEffectiveDate(sdf.format(probation.getProbationEndDate()));
+                }
+                if (probation.getConfirmDate() != null) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    emvm.setProbationConfirmationDate(sdf.format(probation.getConfirmDate()));
+                }
+            }
+        } else {
+            emvm.setIsProbation(false);
+            emvm.setProbationConfirmationStatus("No Status");
+            emvm.setProbationConfirmationEffectiveDate("");
+            emvm.setProbationConfirmationDate("");
+        }
+
+        emvm.setIsActive(emp.getIsActive());
+        emvm.setIsUpdated(emp.getIsUpdated());
+        emvm.setIsDeleted(emp.getIsDeleted());
+        emvm.setCreatedBy(emp.getCreatedBy());
+        emvm.setCreatedDate(convertToJsonDateObj(emp.getCreatedDate()));
+        emvm.setLastUpdatedBy(emp.getLastUpdatedBy());
+        emvm.setLastUpdatedDate(convertToJsonDateObj(emp.getLastUpdatedDate()));
+        emvm.setMsg("GetEmployee - Success");
+
+        return emvm;
     }
 
     public EmployeeMasterViewModel addEmployee(EmployeeMasterViewModel model) {
-        Map<String, Object> result = new HashMap<>();
-        model.setMsg("Employee added successfully");
+        int loginId = (model.getLoginId() != null && model.getLoginId() != 0) ? model.getLoginId() : 0;
+        if (loginId == 0) throw new RuntimeException("LoginId is Missing");
+
+        List<EmployeeMaster> existing = employeeMasterRepository.findByUserNameIgnoreCaseAndIsActiveAndIsDeleted(
+            model.getEmpCode() != null ? model.getEmpCode() : "", true, false);
+        if (!existing.isEmpty()) throw new RuntimeException("Employee with this EmpCode already exists");
+
+        String reportName = "";
+        if (model.getReportId() != null && model.getReportId() != 0) {
+            Optional<EmployeeMaster> reportOpt = employeeMasterRepository.findById(model.getReportId());
+            if (reportOpt.isPresent() && reportOpt.get().getEmpCode() != null) {
+                reportName = reportOpt.get().getEmpCode();
+            }
+        }
+
+        String password = "password";
+        String encodedPassword;
+        try {
+            encodedPassword = Base64.getEncoder().encodeToString(password.getBytes(StandardCharsets.UTF_16LE));
+        } catch (Exception e) {
+            encodedPassword = password;
+        }
+
+        EmployeeMaster em = new EmployeeMaster();
+        em.setOldEmp_ID(0);
+        em.setCompId(model.getCompId());
+        em.setLeId(model.getLeId() != null ? model.getLeId() : 0);
+        em.setBuId(model.getBuId() != null ? model.getBuId() : 0);
+        em.setLocationId(model.getLocationId() != null ? model.getLocationId() : 0);
+        em.setCategoryId(model.getDeptId());
+        em.setDeptName(model.getDeptName());
+        em.setDesignationId(model.getDesignationId());
+        em.setDesignationName(model.getDesignation());
+        em.setReportId(model.getReportId());
+        em.setReportName(reportName);
+        em.setEmpCode(model.getEmpCode());
+        em.setUserName(model.getEmpCode());
+        em.setPassword(encodedPassword);
+        em.setPhoto(model.getPhoto() != null ? model.getPhoto() : "");
+        em.setSalutation(model.getSalutationId());
+        em.setFirstName(model.getFirstName());
+        em.setMiddleName(model.getMiddleName() != null ? model.getMiddleName() : "");
+        em.setLastName(model.getLastName());
+        em.setDob(parseDateFromObject(model.getDob()));
+        em.setMobileNo(model.getMobileNo());
+        em.setEmailId(model.getEmailId());
+        em.setBloodGroup(model.getBloodGroup());
+        em.setMaritalStatus(model.getMaritalStatus());
+        em.setGender(model.getGender());
+        em.setInterviewDate(parseDateFromObject(model.getInterviewDate()));
+        em.setJoiningDate(parseDateFromObject(model.getJoiningDate()));
+        em.setEmpType(model.getEmpTypeId());
+        em.setEmpStatus("Active");
+        em.setAuthorisedEntity(model.getAuthorisedEntity());
+        em.setIsRelieved(false);
+        em.setcEndDate(parseDateFromObject(model.getcEndDate()));
+        em.setIsActive(true);
+        em.setIsUpdated(false);
+        em.setIsDeleted(false);
+        em.setCreatedBy(loginId);
+        em.setCreatedDate(new Date());
+        em.setLastUpdatedBy(loginId);
+        em.setLastUpdatedDate(new Date());
+
+        employeeMasterRepository.save(em);
+
+        // Create log entry
+        EmployeeMasterLog eml = new EmployeeMasterLog();
+        eml.setEmpId(em.getEmpId());
+        eml.setOldEmp_ID(0);
+        eml.setCompId(model.getCompId());
+        eml.setLeId(model.getLeId() != null ? model.getLeId() : 0);
+        eml.setBuId(model.getBuId() != null ? model.getBuId() : 0);
+        eml.setLocationId(model.getLocationId() != null ? model.getLocationId() : 0);
+        eml.setCategoryId(model.getDeptId());
+        eml.setDeptName(model.getDeptName());
+        eml.setDesignationId(model.getDesignationId());
+        eml.setDesignationName(model.getDesignation());
+        eml.setReportId(model.getReportId());
+        eml.setReportName(reportName);
+        eml.setEmpCode(model.getEmpCode());
+        eml.setUserName(model.getEmpCode());
+        eml.setPassword(encodedPassword);
+        eml.setPhoto(model.getPhoto() != null ? model.getPhoto() : "");
+        eml.setSalutation(model.getSalutationId());
+        eml.setFirstName(model.getFirstName());
+        eml.setMiddleName(model.getMiddleName() != null ? model.getMiddleName() : "");
+        eml.setLastName(model.getLastName());
+        eml.setDob(parseDateFromObject(model.getDob()));
+        eml.setMobileNo(model.getMobileNo());
+        eml.setEmailId(model.getEmailId());
+        eml.setBloodGroup(model.getBloodGroup());
+        eml.setMaritalStatus(model.getMaritalStatus());
+        eml.setGender(model.getGender());
+        eml.setJoiningDate(parseDateFromObject(model.getJoiningDate()));
+        eml.setEmpType(model.getEmpTypeId());
+        eml.setEmpStatus("Active");
+        eml.setAuthorisedEntity(model.getAuthorisedEntity());
+        eml.setIsRelieved(false);
+        eml.setCEndDate(parseDateFromObject(model.getcEndDate()));
+        eml.setIsActive(true);
+        eml.setIsUpdated(false);
+        eml.setIsDeleted(false);
+        eml.setCreatedBy(loginId);
+        eml.setCreatedDate(new Date());
+        eml.setLastUpdatedBy(loginId);
+        eml.setLastUpdatedDate(new Date());
+        employeeMasterLogRepository.save(eml);
+
+        model.setEmpId(em.getEmpId());
+        model.setMsg("Added");
         return model;
     }
 

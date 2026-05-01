@@ -420,7 +420,7 @@ public class EmployeeController {
     @PostMapping("/GetEmployee")
     public ResponseEntity<?> getEmployee(@RequestBody EmployeeMasterViewModel model) {
         try {
-            EmployeeMasterViewModel result = employeeService.getEmployeeById(model);
+            EmployeeMasterViewModel result = employeeService.getEmployee(model);
             return ResponseEntity.ok(result);
         } catch (RuntimeException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
